@@ -24,11 +24,21 @@ const config: webpack.Configuration = {
     module: {
         rules: [
             {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
+            {
                 test: /\.(sa|sc|c)ss$/,
                 use: [MiniCssExtractPlugin.loader,'css-loader'],
             },
-        ]
+        ],
+        
     },
+    resolve :{
+        extensions: ['.tsx','.ts','.js'],
+    },
+
     optimization: {
         runtimeChunk: 'single',
         splitChunks: {
